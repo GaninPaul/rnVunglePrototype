@@ -3,9 +3,6 @@ package com.rnvungleprototype.vungle;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.bridge.Arguments;
-import com.facebook.react.bridge.Promise;
 
 import com.vungle.warren.*;
 import com.vungle.warren.error.VungleException;
@@ -38,7 +35,7 @@ public class VungleModule extends ReactContextBaseJavaModule {
             @Override
             public void onAutoCacheAdAvailable(String placementId) {
             }
-        },  new VungleSettings.Builder().setAndroidIdOptOut(true).build());
+        }, new VungleSettings.Builder().setAndroidIdOptOut(true).build());
     }
 
     private void innerLoadAds(final String placementId) {

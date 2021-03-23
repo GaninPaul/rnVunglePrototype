@@ -1,9 +1,7 @@
 package com.rnvungleprototype;
 
-import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
-import android.os.Bundle;
 
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
@@ -41,14 +39,6 @@ public class MainApplication extends Application implements ReactApplication {
                     return "index";
                 }
             };
-
-    private Activity mCurrentActivity;
-
-//    @Override
-//    public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-//        mCurrentActivity = activity;
-//    }
-
 
     @Override
     public ReactNativeHost getReactNativeHost() {
