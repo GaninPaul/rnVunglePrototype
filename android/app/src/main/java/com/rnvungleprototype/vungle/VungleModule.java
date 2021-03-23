@@ -22,23 +22,9 @@ public class VungleModule extends ReactContextBaseJavaModule {
         return "RNVungle";
     }
 
-    private void initVungle(final String appId) {
-        Vungle.init(appId, reactContext.getApplicationContext(), new InitCallback() {
-            @Override
-            public void onSuccess() {
-            }
 
-            @Override
-            public void onError(VungleException e) {
-            }
-
-            @Override
-            public void onAutoCacheAdAvailable(String placementId) {
-            }
-        }, new VungleSettings.Builder().setAndroidIdOptOut(true).build());
-    }
-
-    private void innerLoadAds(final String placementId) {
+    @ReactMethod
+    public void loadAds(final String placementId) {
         if (Vungle.isInitialized()) {
             Vungle.loadAd(placementId, new LoadAdCallback() {
                 @Override
@@ -52,7 +38,8 @@ public class VungleModule extends ReactContextBaseJavaModule {
         }
     }
 
-    private void bannerLoadAds(final String placementId) {
+    @ReactMethod
+    public void loadBannerAds(final String placementId) {
         if (Vungle.isInitialized()) {
             Banners.loadBanner(placementId, AdConfig.AdSize.BANNER,
                     new LoadAdCallback() {
@@ -68,18 +55,20 @@ public class VungleModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void loadAds(final String placementId) {
-        innerLoadAds(placementId);
-    }
-
-    @ReactMethod
-    public void loadBannerAds(final String placementId) {
-        bannerLoadAds(placementId);
-    }
-
-    @ReactMethod
     public void init(final String appid) {
-        initVungle(appid);
+        Vungle.init(appid, reactContext.getApplicationContext(), new InitCallback() {
+            @Override
+            public void onSuccess() {
+            }
+
+            @Override
+            public void onError(VungleException e) {
+            }
+
+            @Override
+            public void onAutoCacheAdAvailable(String placementId) {
+            }
+        }, new VungleSettings.Builder().setAndroidIdOptOut(true).build());
     }
 
 
