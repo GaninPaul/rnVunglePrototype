@@ -6,12 +6,11 @@
  * @flow strict-local
  */
 
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 import {
   SafeAreaView,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   View,
@@ -19,6 +18,10 @@ import {
 } from 'react-native';
 
 import RNVungle, {VungleView} from './src/VungleView';
+
+const backgroundStyle = {
+  backgroundColor: '#fff',
+};
 
 const App = () => {
   const [banner, shoWBanner] = useState(true);
@@ -30,13 +33,8 @@ const App = () => {
   RNVungle.loadAds(placementId);
   RNVungle.loadBannerAds(placementId2);
 
-  const backgroundStyle = {
-    backgroundColor: '#fff',
-  };
-
   return (
     <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={'dark-content'} />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
